@@ -1,0 +1,94 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <p class="card-category">Liste des absences</p>
+                <button (click)="openAddAbsenceModal(addAbsenceTemplate)" class="btn btn-primary">Ajouter</button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <th>Nom de l'employé</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th>Raison</th>
+                            <th>Approuvé</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let absence of absences">
+                                <td>{{ absence.employeeName }}</td>
+                                <td>{{ absence.startDate | date }}</td>
+                                <td>{{ absence.endDate | date }}</td>
+                                <td>{{ absence.reason }}</td>
+                                <td>{{ absence.approved ? 'Oui' : 'Non' }}</td>
+                                <td>
+                                    <button (click)="openEditAbsenceModal(editAbsenceTemplate, absence)" class="btn btn-primary">Modifier</button>
+                                    <!-- Add any additional actions here as needed -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Absence Modal -->
+<ng-template #editAbsenceTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title">Modifier une absence</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <!-- Insert the form for editing an absence -->
+        <div class="form-group">
+            <label for="editEmployeeName">Nom de l'employé</label>
+            <input type="text" class="form-control" id="editEmployeeName" [(ngModel)]="selectedAbsence.employeeName">
+        </div>
+        <div class="form-group">
+            <label for="editStartDate">Date de début</label>
+            <input type="date" class="form-control" id="editStartDate" [(ngModel)]="selectedAbsence.startDate">
+        </div>
+        <div class="form-group">
+            <label for="editEndDate">Date de fin</label>
+            <input type="date" class="form-control" id="editEndDate" [(ngModel)]="selectedAbsence.endDate">
+        </div>
+        <div class="form-group">
+            <label for="editReason">Raison</label>
+            <input type="text" class="form-control" id="editReason" [(ngModel)]="selectedAbsence.reason">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="editApproved" [(ngModel)]="selectedAbsence.approved">
+            <label class="form-check-label" for="editApproved">Approuvé</label>
+        </div>
+        <!-- Add any other necessary fields here -->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Fermer</button>
+        <button type="button" class="btn btn-primary" (click)="editAbsence(selectedAbsence)">Enregistrer les modifications</button>
+    </div>
+
+
+
+</ng-template>
+
+<!-- Add Absence Modal -->
+<ng-template #addAbsenceTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title">Ajouter une absence</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <!-- Insert the form for adding a new absence -->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Fermer</button>
+        <button type="button" class="btn btn-primary" (click)="addAbsence(newAbsence)">Ajouter</button>
+    </div>
+</ng-template>

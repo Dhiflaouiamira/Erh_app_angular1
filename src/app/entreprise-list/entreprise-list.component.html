@@ -1,0 +1,203 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Entreprises List</h4>
+                      <p class="card-category">Here is a subtitle for the entreprises list</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class="text-primary">
+                                  <th>First Name</th>
+                                  <th>Last Name</th>
+                                  <th>Email</th>
+                                  <th>Phone Number</th>
+                                  <th>Image</th>
+                                  <th>Action</th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let entreprise of entreprises">
+                                      <td>{{ entreprise.nom}}</td>
+                                      <td>{{ entreprise.adresse }}</td>
+                                      <td>{{ entreprise.ville }}</td>
+                                      <td>{{ entreprise.telephone }}</td>
+                                      <td>
+                                          <img [src]="entreprise.logo"  style="max-width: 100px; max-height: 100px;">
+                                      </td>
+                                      <td>
+                                          <button (click)="openEditEntrepriseModal(editTemplate, entreprise)" class="btn btn-primary">Edit</button>
+                                          <button (click)="deleteEntreprise(entreprise)" class="btn btn-danger">Delete</button>
+                                          <button (click)="openDetailsEntrepriseModal(detailsTemplate, entreprise)" class="btn btn-info">Details</button>
+
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<ng-template #addTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Add Entreprise</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="addFirstName">First Name</label>
+      <input type="text" class="form-control" id="addFirstName" [(ngModel)]="newEntreprise.firstName">
+    </div>
+    <div class="form-group">
+      <label for="addLastName">Last Name</label>
+      <input type="text" class="form-control" id="addLastName" [(ngModel)]="newEntreprise.lastName">
+    </div>
+    <div class="form-group">
+      <label for="addEmail">Email</label>
+      <input type="email" class="form-control" id="addEmail" [(ngModel)]="newEntreprise.email">
+    </div>
+    <div class="form-group">
+      <label for="addPhoneNumber">Phone Number</label>
+      <input type="text" class="form-control" id="addPhoneNumber" [(ngModel)]="newEntreprise.phoneNumber">
+    </div>
+    <!-- Add other necessary form fields as needed -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="addEntreprise(newEntreprise)">Add</button>
+  </div>
+</ng-template>
+<ng-template #editTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Edit Entreprise</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="editFirstName">First Name</label>
+      <input type="text" class="form-control" id="editFirstName" [(ngModel)]="selectedEntreprise.firstName">
+    </div>
+    <div class="form-group">
+      <label for="editLastName">Last Name</label>
+      <input type="text" class="form-control" id="editLastName" [(ngModel)]="selectedEntreprise.lastName">
+    </div>
+    <div class="form-group">
+      <label for="editEmail">Email</label>
+      <input type="email" class="form-control" id="editEmail" [(ngModel)]="selectedEntreprise.email">
+    </div>
+    <div class="form-group">
+      <label for="editPhoneNumber">Phone Number</label>
+      <input type="text" class="form-control" id="editPhoneNumber" [(ngModel)]="selectedEntreprise.phoneNumber">
+    </div>
+    <!-- Add other necessary form fields as needed -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="editEntreprise(selectedEntreprise)">Save Changes</button>
+  </div>
+</ng-template>
+
+
+<ng-template #detailsTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Entreprise Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="detailFirstName">First Name</label>
+      <p id="detailFirstName">{{ selectedEntreprise.firstName }}</p>
+    </div>
+    <div class="form-group">
+      <label for="detailLastName">Last Name</label>
+      <p id="detailLastName">{{ selectedEntreprise.lastName }}</p>
+    </div>
+    <div class="form-group">
+      <label for="detailEmail">Email</label>
+      <p id="detailEmail">{{ selectedEntreprise.email }}</p>
+    </div>
+    <div class="form-group">
+      <label for="detailPhoneNumber">Phone Number</label>
+      <p id="detailPhoneNumber">{{ selectedEntreprise.phoneNumber }}</p>
+    </div>
+    <!-- Add other necessary details as needed -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>
+<!-- Add Entreprise Modal -->
+<ng-template #addTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Add Entreprise</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="addFirstName">First Name</label>
+      <input type="text" class="form-control" id="addFirstName" [(ngModel)]="newEntreprise.firstName">
+    </div>
+    <div class="form-group">
+      <label for="addLastName">Last Name</label>
+      <input type="text" class="form-control" id="addLastName" [(ngModel)]="newEntreprise.lastName">
+    </div>
+    <div class="form-group">
+      <label for="addEmail">Email</label>
+      <input type="email" class="form-control" id="addEmail" [(ngModel)]="newEntreprise.email">
+    </div>
+    <div class="form-group">
+      <label for="addPhoneNumber">Phone Number</label>
+      <input type="text" class="form-control" id="addPhoneNumber" [(ngModel)]="newEntreprise.phoneNumber">
+    </div>
+    <!-- Add other necessary form fields as needed -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="addEntreprise(newEntreprise)">Add</button>
+  </div>
+</ng-template>
+
+<!-- Details Entreprise Modal -->
+<ng-template #detailsTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Entreprise Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="detailFirstName">First Name</label>
+      <p id="detailFirstName">{{ selectedEntreprise.firstName }}</p>
+    </div>
+    <div class="form-group">
+      <label for="detailLastName">Last Name</label>
+      <p id="detailLastName">{{ selectedEntreprise.lastName }}</p>
+    </div>
+    <div class="form-group">
+      <label for="detailEmail">Email</label>
+      <p id="detailEmail">{{ selectedEntreprise.email }}</p>
+    </div>
+    <div class="form-group">
+      <label for="detailPhoneNumber">Phone Number</label>
+      <p id="detailPhoneNumber">{{ selectedEntreprise.phoneNumber }}</p>
+    </div>
+    <!-- Add other necessary details as needed -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>
