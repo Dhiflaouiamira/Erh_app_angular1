@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component'; // Import L
 import { SignupComponent } from './components/signup/signup.component'; // Import SignupComponent
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SuperadminLayoutComponent } from './layouts/superAdmin-layout/admin-layout.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { SuperadminLayoutComponent } from './layouts/superAdmin-layout/admin-lay
     AppRoutingModule,
     RouterModule.forRoot([], { useHash: false }),
     ModalModule.forRoot(),
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

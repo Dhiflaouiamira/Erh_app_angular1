@@ -6,6 +6,8 @@
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">Users List</h4>
                         <p class="card-category">Here is a subtitle for the users list</p>
+                        <button (click)="openAddUserModal(addTemplate)" class="btn btn-primary">Add user</button>
+
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -43,162 +45,141 @@
         </div>
     </div>
   </div>
-  <ng-template #addTemplate>
-    <div class="modal-header">
-      <h4 class="modal-title">Add User</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="addFirstName">First Name</label>
-        <input type="text" class="form-control" id="addFirstName" [(ngModel)]="newUser.firstName">
-      </div>
-      <div class="form-group">
-        <label for="addLastName">Last Name</label>
-        <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.lastName">
-      </div>
-      <div class="form-group">
-        <label for="addEmail">Email</label>
-        <input type="email" class="form-control" id="addEmail" [(ngModel)]="newUser.email">
-      </div>
-      <div class="form-group">
-        <label for="addPhoneNumber">Phone Number</label>
-        <input type="text" class="form-control" id="addPhoneNumber" [(ngModel)]="newUser.phoneNumber">
-      </div>
-      <!-- Add other necessary form fields as needed -->
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
-      <button type="button" class="btn btn-primary" (click)="addUser(newUser)">Add</button>
-    </div>
-  </ng-template>
-  <ng-template #editTemplate>
-    <div class="modal-header">
-      <h4 class="modal-title">Edit User</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="editFirstName">First Name</label>
-        <input type="text" class="form-control" id="editFirstName" [(ngModel)]="selectedUser.firstName">
-      </div>
-      <div class="form-group">
-        <label for="editLastName">Last Name</label>
-        <input type="text" class="form-control" id="editLastName" [(ngModel)]="selectedUser.lastName">
-      </div>
-      <div class="form-group">
-        <label for="editEmail">Email</label>
-        <input type="email" class="form-control" id="editEmail" [(ngModel)]="selectedUser.email">
-      </div>
-      <div class="form-group">
-        <label for="editPhoneNumber">Phone Number</label>
-        <input type="text" class="form-control" id="editPhoneNumber" [(ngModel)]="selectedUser.phoneNumber">
-      </div>
-      <!-- Add other necessary form fields as needed -->
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
-      <button type="button" class="btn btn-primary" (click)="editUser(selectedUser)">Save Changes</button>
-    </div>
-  </ng-template>
-  
+      <ng-template #addTemplate>
+        <div class="modal-header">
+          <h4 class="modal-title">Add User</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="addFirstName">First Name</label>
+            <input type="text" class="form-control" id="addFirstName" [(ngModel)]="newUser.firstName">
+          </div>
+          <div class="form-group">
+            <label for="addLastName">Last Name</label>
+            <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.lastName">
+          </div>
+          <div class="form-group">
+            <label for="addEmail">Email</label>
+            <input type="email" class="form-control" id="addEmail" [(ngModel)]="newUser.email" name="email">
+            <div *ngIf="emailExistsError" class="error-message">Email already exists</div>
+          </div>
+          <div class="form-group">
+            <label for="addLastName">password</label>
+            <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.password">
+          </div>
+          <div class="form-group">
+            <label for="addLastName">phoneNumber</label>
+            <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.phoneNumber">
+          </div>
+          <div class="form-group">
+            <label for="addLastName">image</label>
+            <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.image">
+          </div>
+          <div class="form-group">
+            <label for="addLastName">department</label>
+            <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.department">
+          </div>
+        
+          <div class="form-group">
+            <label for="addLastName">address</label>
+            <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.address">
+          </div>
+       
+          <div class="form-group">
+            <label for="addLastName">salary</label>
+            <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.salary">
+          </div>
+        
+        
+          <!-- Add other necessary form fields as needed -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addUser(newUser)">Add</button>
+        </div>
+      </ng-template>
 
-  <ng-template #detailsTemplate>
-    <div class="modal-header">
-      <h4 class="modal-title">User Details</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+
+      <ng-template #editTemplate>
+        <div class="modal-header">
+          <h4 class="modal-title">Edit User</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="editFirstName">First Name</label>
+            <input type="text" class="form-control" id="editFirstName" [(ngModel)]="selectedUser.firstName">
+          </div>
+          <div class="form-group">
+            <label for="editLastName">Last Name</label>
+            <input type="text" class="form-control" id="editLastName" [(ngModel)]="selectedUser.lastName">
+          </div>
+          <div class="form-group">
+            <label for="editEmail">Email</label>
+            <input type="email" class="form-control" id="editEmail" [(ngModel)]="selectedUser.email">
+          </div>
+          <div class="form-group">
+            <label for="editPhoneNumber">Phone Number</label>
+            <input type="text" class="form-control" id="editPhoneNumber" [(ngModel)]="selectedUser.phoneNumber">
+          </div>
+          <!-- Add other necessary form fields as needed -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="updateUser(selectedUser)">Save Changes</button>
+        </div>
+      </ng-template>
+      
+    
+      <!-- Inside detailsTemplate -->
+<ng-template #detailsTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">User Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="detailFirstName">First Name</label>
+      <p id="detailFirstName">{{ selectedUser.firstName }}</p>
     </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="detailFirstName">First Name</label>
-        <p id="detailFirstName">{{ selectedUser.firstName }}</p>
-      </div>
-      <div class="form-group">
-        <label for="detailLastName">Last Name</label>
-        <p id="detailLastName">{{ selectedUser.lastName }}</p>
-      </div>
-      <div class="form-group">
-        <label for="detailEmail">Email</label>
-        <p id="detailEmail">{{ selectedUser.email }}</p>
-      </div>
-      <div class="form-group">
-        <label for="detailPhoneNumber">Phone Number</label>
-        <p id="detailPhoneNumber">{{ selectedUser.phoneNumber }}</p>
-      </div>
-      <!-- Add other necessary details as needed -->
+    <div class="form-group">
+      <label for="detailLastName">Last Name</label>
+      <p id="detailLastName">{{ selectedUser.lastName }}</p>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <div class="form-group">
+      <label for="detailEmail">Email</label>
+      <p id="detailEmail">{{ selectedUser.email }}</p>
     </div>
-  </ng-template>
-  <!-- Add User Modal -->
-<ng-template #addTemplate>
-    <div class="modal-header">
-      <h4 class="modal-title">Add User</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+    <div class="form-group">
+      <label for="detailPhoneNumber">Phone Number</label>
+      <p id="detailPhoneNumber">{{ selectedUser.phoneNumber }}</p>
     </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="addFirstName">First Name</label>
-        <input type="text" class="form-control" id="addFirstName" [(ngModel)]="newUser.firstName">
-      </div>
-      <div class="form-group">
-        <label for="addLastName">Last Name</label>
-        <input type="text" class="form-control" id="addLastName" [(ngModel)]="newUser.lastName">
-      </div>
-      <div class="form-group">
-        <label for="addEmail">Email</label>
-        <input type="email" class="form-control" id="addEmail" [(ngModel)]="newUser.email">
-      </div>
-      <div class="form-group">
-        <label for="addPhoneNumber">Phone Number</label>
-        <input type="text" class="form-control" id="addPhoneNumber" [(ngModel)]="newUser.phoneNumber">
-      </div>
-      <!-- Add other necessary form fields as needed -->
+    <div class="form-group">
+      <label for="detailImage">Image</label>
+      <img [src]="selectedUser.image" style="max-width: 100px; max-height: 100px;">
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
-      <button type="button" class="btn btn-primary" (click)="addUser(newUser)">Add</button>
+    <div class="form-group">
+      <label for="detailDepartment">Department</label>
+      <p id="detailDepartment">{{ selectedUser.department }}</p>
     </div>
-  </ng-template>
-  
-  <!-- Details User Modal -->
-  <ng-template #detailsTemplate>
-    <div class="modal-header">
-      <h4 class="modal-title">User Details</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+    <div class="form-group">
+      <label for="detailAddress">Address</label>
+      <p id="detailAddress">{{ selectedUser.address }}</p>
     </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="detailFirstName">First Name</label>
-        <p id="detailFirstName">{{ selectedUser.firstName }}</p>
-      </div>
-      <div class="form-group">
-        <label for="detailLastName">Last Name</label>
-        <p id="detailLastName">{{ selectedUser.lastName }}</p>
-      </div>
-      <div class="form-group">
-        <label for="detailEmail">Email</label>
-        <p id="detailEmail">{{ selectedUser.email }}</p>
-      </div>
-      <div class="form-group">
-        <label for="detailPhoneNumber">Phone Number</label>
-        <p id="detailPhoneNumber">{{ selectedUser.phoneNumber }}</p>
-      </div>
-      <!-- Add other necessary details as needed -->
+    <div class="form-group">
+      <label for="detailSalary">Salary</label>
+      <p id="detailSalary">{{ selectedUser.salary }}</p>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
-    </div>
-  </ng-template>
-  
+    <!-- Add other necessary details as needed -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>

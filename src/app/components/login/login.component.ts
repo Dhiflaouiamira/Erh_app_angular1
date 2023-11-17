@@ -28,11 +28,9 @@ export class LoginComponent implements OnInit {
       .then(res => {
         this.authService.saveLoggedUser(res);
         this.errorMsg = "";
-        const role = localStorage.getItem("role");
-        if (role == "admin") {
-          this.router.navigate(['/dashboard']);
+         this.router.navigate(['/dashboard']);
         
-        } 
+        
       })
       .catch(err => {
         if (err.status === 401 && err.error && err.error.message === "Agent login failed") {

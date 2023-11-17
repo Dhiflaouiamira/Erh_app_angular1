@@ -122,5 +122,9 @@ export class NavbarComponent implements OnInit {
       }
       return 'Dashboard';
     }
+    logout(): void {
+        console.log('Déconnexion de l\'utilisateur...');
+        this.router.navigate(['/']); // Redirection vers la page de connexion
+      }
   
 }

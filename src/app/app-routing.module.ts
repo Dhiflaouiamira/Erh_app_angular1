@@ -10,7 +10,7 @@ import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent
   },
   {
@@ -18,32 +18,18 @@ const routes: Routes = [
     component: SignupComponent
   },
   {
-    path: 'dashboard',
+    path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full'
-  },
-  {
+    pathMatch: 'full',
+  }, {
     path: '',
     component: AdminLayoutComponent,
     children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-      }
-    ]
-  },
-  {
-    path: 'superadmin', // Add a path for Superadmin
-    component: SuperadminLayoutComponent,
-    children: [
-      {
-        path: 'superadmin',
-        loadChildren: () =>
-          import('./layouts/superAdmin-layout/admin-layout.module').then(m => m.SuperadminLayoutModule)
-      }
-    ]
-  },
+        {
+      path: '',
+      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(x=>x.AdminLayoutModule)
+  }]},
+
 ];
 
 @NgModule({

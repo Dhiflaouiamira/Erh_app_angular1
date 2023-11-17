@@ -1,3 +1,4 @@
+import { Entreprise } from "./entreprise";
 import { Role } from "./role";
 
 export class User {
@@ -7,6 +8,7 @@ export class User {
   email: string = '';
   password: string = '';
   phoneNumber: number = 0;
+  entreprise: Entreprise = new Entreprise();
   cin: number = 0;
   image: string = '';
   department: string = '';

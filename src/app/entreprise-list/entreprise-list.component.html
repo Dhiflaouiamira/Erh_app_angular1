@@ -6,16 +6,18 @@
                   <div class="card-header card-header-danger">
                       <h4 class="card-title">Entreprises List</h4>
                       <p class="card-category">Here is a subtitle for the entreprises list</p>
+                      <button (click)="openAddEntrepriseModal(addEntrepriseModal)" class="btn btn-primary">Add Entreprise</button>
+
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
                           <table class="table">
                               <thead class="text-primary">
-                                  <th>First Name</th>
-                                  <th>Last Name</th>
+                                  <th>nom</th>
+                                  <th>adresse</th>
                                   <th>Email</th>
-                                  <th>Phone Number</th>
-                                  <th>Image</th>
+                                  <th>ville</th>
+                                  <th>telephone</th>
                                   <th>Action</th>
                               </thead>
                               <tbody>
@@ -43,7 +45,7 @@
       </div>
   </div>
 </div>
-<ng-template #addTemplate>
+<ng-template #addEntrepriseModal>
   <div class="modal-header">
     <h4 class="modal-title">Add Entreprise</h4>
     <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
@@ -51,21 +53,26 @@
     </button>
   </div>
   <div class="modal-body">
+    <!-- Form fields for adding an enterprise -->
     <div class="form-group">
-      <label for="addFirstName">First Name</label>
-      <input type="text" class="form-control" id="addFirstName" [(ngModel)]="newEntreprise.firstName">
+      <label for="addEntrepriseName">Nom</label>
+      <input type="text" class="form-control" id="addEntrepriseName" [(ngModel)]="newEntreprise.nom">
     </div>
     <div class="form-group">
-      <label for="addLastName">Last Name</label>
-      <input type="text" class="form-control" id="addLastName" [(ngModel)]="newEntreprise.lastName">
+      <label for="addAdresse">Adresse</label>
+      <input type="text" class="form-control" id="addAdresse" [(ngModel)]="newEntreprise.adresse">
     </div>
     <div class="form-group">
       <label for="addEmail">Email</label>
       <input type="email" class="form-control" id="addEmail" [(ngModel)]="newEntreprise.email">
     </div>
     <div class="form-group">
-      <label for="addPhoneNumber">Phone Number</label>
-      <input type="text" class="form-control" id="addPhoneNumber" [(ngModel)]="newEntreprise.phoneNumber">
+      <label for="addVille">Ville</label>
+      <input type="text" class="form-control" id="addVille" [(ngModel)]="newEntreprise.ville">
+    </div>
+    <div class="form-group">
+      <label for="addTelephone">Telephone</label>
+      <input type="text" class="form-control" id="addTelephone" [(ngModel)]="newEntreprise.telephone">
     </div>
     <!-- Add other necessary form fields as needed -->
   </div>
@@ -74,6 +81,7 @@
     <button type="button" class="btn btn-primary" (click)="addEntreprise(newEntreprise)">Add</button>
   </div>
 </ng-template>
+
 <ng-template #editTemplate>
   <div class="modal-header">
     <h4 class="modal-title">Edit Entreprise</h4>
@@ -107,70 +115,6 @@
 </ng-template>
 
 
-<ng-template #detailsTemplate>
-  <div class="modal-header">
-    <h4 class="modal-title">Entreprise Details</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="form-group">
-      <label for="detailFirstName">First Name</label>
-      <p id="detailFirstName">{{ selectedEntreprise.firstName }}</p>
-    </div>
-    <div class="form-group">
-      <label for="detailLastName">Last Name</label>
-      <p id="detailLastName">{{ selectedEntreprise.lastName }}</p>
-    </div>
-    <div class="form-group">
-      <label for="detailEmail">Email</label>
-      <p id="detailEmail">{{ selectedEntreprise.email }}</p>
-    </div>
-    <div class="form-group">
-      <label for="detailPhoneNumber">Phone Number</label>
-      <p id="detailPhoneNumber">{{ selectedEntreprise.phoneNumber }}</p>
-    </div>
-    <!-- Add other necessary details as needed -->
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
-  </div>
-</ng-template>
-<!-- Add Entreprise Modal -->
-<ng-template #addTemplate>
-  <div class="modal-header">
-    <h4 class="modal-title">Add Entreprise</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="form-group">
-      <label for="addFirstName">First Name</label>
-      <input type="text" class="form-control" id="addFirstName" [(ngModel)]="newEntreprise.firstName">
-    </div>
-    <div class="form-group">
-      <label for="addLastName">Last Name</label>
-      <input type="text" class="form-control" id="addLastName" [(ngModel)]="newEntreprise.lastName">
-    </div>
-    <div class="form-group">
-      <label for="addEmail">Email</label>
-      <input type="email" class="form-control" id="addEmail" [(ngModel)]="newEntreprise.email">
-    </div>
-    <div class="form-group">
-      <label for="addPhoneNumber">Phone Number</label>
-      <input type="text" class="form-control" id="addPhoneNumber" [(ngModel)]="newEntreprise.phoneNumber">
-    </div>
-    <!-- Add other necessary form fields as needed -->
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
-    <button type="button" class="btn btn-primary" (click)="addEntreprise(newEntreprise)">Add</button>
-  </div>
-</ng-template>
-
-<!-- Details Entreprise Modal -->
 <ng-template #detailsTemplate>
   <div class="modal-header">
     <h4 class="modal-title">Entreprise Details</h4>

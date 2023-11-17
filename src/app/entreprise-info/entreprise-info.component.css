@@ -1,0 +1,29 @@
+.enterprise-info {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .static-info {
+    margin-top: 20px;
+  }
+  
+  .static-info h3 {
+    color: #333;
+  }
+  
+  .static-info p {
+    margin: 8px 0;
+  }
+  
+  .static-info strong {
+    font-weight: bold;
+  }
+  
+  .info {
+    color: #007bff; /* Couleur du texte pour les informations */
+    /* Autres styles pour les informations si nécessaire */
+  }
+  

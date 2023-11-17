@@ -1,7 +1,7 @@
 
 
 export class Entreprise {
-  _id?: string;
+  id: string;
   nom: string="";
   adresse: string="";
   ville: string="";

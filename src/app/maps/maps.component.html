@@ -1,94 +1,161 @@
 <div class="main-content">
     <div class="container-fluid">
-        <div class="card">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
             <div class="card-header card-header-danger">
-                <p class="card-category">Liste des absences</p>
-                <button (click)="openAddAbsenceModal(addAbsenceTemplate)" class="btn btn-primary">Ajouter</button>
+              <h4 class="card-title">Activities List</h4>
+              <p class="card-category">Here is a subtitle for the activities list</p>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead class="text-primary">
-                            <th>Nom de l'employé</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th>Raison</th>
-                            <th>Approuvé</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let absence of absences">
-                                <td>{{ absence.employeeName }}</td>
-                                <td>{{ absence.startDate | date }}</td>
-                                <td>{{ absence.endDate | date }}</td>
-                                <td>{{ absence.reason }}</td>
-                                <td>{{ absence.approved ? 'Oui' : 'Non' }}</td>
-                                <td>
-                                    <button (click)="openEditAbsenceModal(editAbsenceTemplate, absence)" class="btn btn-primary">Modifier</button>
-                                    <!-- Add any additional actions here as needed -->
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>Activity Name</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Project</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Meeting with Stakeholders</td>
+                      <td>Discuss project goals and requirements with stakeholders</td>
+                      <td>2023-11-01</td>
+                      <td>2023-11-01</td>
+                      <td>Completed</td>
+                      <td>Project A</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Design Sprint Workshop</td>
+                      <td>Conduct a design sprint session for ideation and prototyping</td>
+                      <td>2023-11-05</td>
+                      <td>2023-11-10</td>
+                      <td>In Progress</td>
+                      <td>Project B</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Development Phase</td>
+                      <td>Implement new features and functionalities</td>
+                      <td>2023-11-15</td>
+                      <td>2023-12-15</td>
+                      <td>Planned</td>
+                      <td>Project C</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>User Testing</td>
+                      <td>Test the application with real users for feedback</td>
+                      <td>2023-12-20</td>
+                      <td>2023-12-25</td>
+                      <td>Upcoming</td>
+                      <td>Project A</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Deployment and Release</td>
+                      <td>Deploy the application and release to production</td>
+                      <td>2024-01-05</td>
+                      <td>2024-01-05</td>
+                      <td>Planned</td>
+                      <td>Project B</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Documentation</td>
+                      <td>Create user manuals and technical documentation</td>
+                      <td>2024-01-10</td>
+                      <td>2024-01-25</td>
+                      <td>Upcoming</td>
+                      <td>Project C</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Project Review Meeting</td>
+                      <td>Review project progress and plan next steps</td>
+                      <td>2024-02-01</td>
+                      <td>2024-02-01</td>
+                      <td>Planned</td>
+                      <td>Project A</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Marketing Campaign</td>
+                      <td>Launch marketing campaign for product promotion</td>
+                      <td>2024-02-10</td>
+                      <td>2024-02-28</td>
+                      <td>Planned</td>
+                      <td>Project B</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Client Presentation</td>
+                      <td>Present project deliverables to the client</td>
+                      <td>2024-03-05</td>
+                      <td>2024-03-05</td>
+                      <td>Planned</td>
+                      <td>Project C</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Post-launch Analysis</td>
+                      <td>Analyze post-launch performance and user feedback</td>
+                      <td>2024-03-10</td>
+                      <td>2024-03-20</td>
+                      <td>Planned</td>
+                      <td>Project A</td>
+                      <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Details</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<!-- Edit Absence Modal -->
-<ng-template #editAbsenceTemplate>
-    <div class="modal-header">
-        <h4 class="modal-title">Modifier une absence</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <!-- Insert the form for editing an absence -->
-        <div class="form-group">
-            <label for="editEmployeeName">Nom de l'employé</label>
-            <input type="text" class="form-control" id="editEmployeeName" [(ngModel)]="selectedAbsence.employeeName">
-        </div>
-        <div class="form-group">
-            <label for="editStartDate">Date de début</label>
-            <input type="date" class="form-control" id="editStartDate" [(ngModel)]="selectedAbsence.startDate">
-        </div>
-        <div class="form-group">
-            <label for="editEndDate">Date de fin</label>
-            <input type="date" class="form-control" id="editEndDate" [(ngModel)]="selectedAbsence.endDate">
-        </div>
-        <div class="form-group">
-            <label for="editReason">Raison</label>
-            <input type="text" class="form-control" id="editReason" [(ngModel)]="selectedAbsence.reason">
-        </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="editApproved" [(ngModel)]="selectedAbsence.approved">
-            <label class="form-check-label" for="editApproved">Approuvé</label>
-        </div>
-        <!-- Add any other necessary fields here -->
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Fermer</button>
-        <button type="button" class="btn btn-primary" (click)="editAbsence(selectedAbsence)">Enregistrer les modifications</button>
-    </div>
-
-
-
-</ng-template>
-
-<!-- Add Absence Modal -->
-<ng-template #addAbsenceTemplate>
-    <div class="modal-header">
-        <h4 class="modal-title">Ajouter une absence</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <!-- Insert the form for adding a new absence -->
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Fermer</button>
-        <button type="button" class="btn btn-primary" (click)="addAbsence(newAbsence)">Ajouter</button>
-    </div>
-</ng-template>
+  </div>
+  

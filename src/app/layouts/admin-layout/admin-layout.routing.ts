@@ -8,6 +8,9 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { EntrepriseInfoComponent } from 'app/entreprise-info/entreprise-info.component';
+import { PaiementSComponent } from 'app/notifications copy/paiementS.component';
+import { UpgradeaComponent } from 'app/upgrade copy/upgradea.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -60,4 +63,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'user-profile',   component: UserProfileComponent },
+    { path: 'entreprise-info',   component:EntrepriseInfoComponent  },
+    { path: 'paiementS',   component:PaiementSComponent  },
+    { path: 'upgradea',   component:UpgradeaComponent  },
 ];
